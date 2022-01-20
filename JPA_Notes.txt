@@ -1,0 +1,4 @@
+Notes Regarding JPA:-
+
+
+JPA Stands for Java Persistence API, It is used to persist data between Java Object and the relational database.
