@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.StudentCourseRepo.Entity.Users;
@@ -32,36 +33,56 @@ public class StudentController {
 	}
 	
 	@GetMapping("/user/{status}")
-	public List<Users> GetUserByStatus(@PathVariable("status") String status) {
-		List<Users> obj = studentRepo.getUserByStatus(status);
+	public void GetUserByStatus(@PathVariable("status") String status) {
 		try {
-			String dirPath = baseDir + "Users";
-			File dirObj = new File(dirPath);
-			if(!dirObj.exists()) {
-				dirObj.mkdirs();
-			}
-			else {
-				System.out.println("File Already Exist");
-			}
-			String filePath = dirPath+"\\"+status;
-			File fileObj = new File(filePath);
-			if(!fileObj.exists()) {
-				fileObj.createNewFile();
-			}else {
-				System.out.println("File Already Exists.");
-			}
-			
-			obj.forEach(e->{
-				System.out.println(e.getClass().getName());
-			});
-			
+			studentRepo.getUserByStatus(status);
 		} catch (Exception e) {
 			// TODO: handle exception
+			System.out.println(e);
 		}
-		return obj;
+		
+//		List<Users> obj = studentRepo.getUserByStatus(status);
+//		try {
+//			String dirPath = baseDir + "Users";
+//			File dirObj = new File(dirPath);
+//			if(!dirObj.exists()) {
+//				dirObj.mkdirs();
+//			}
+//			else {
+//				System.out.println("File Already Exist");
+//			}
+//			String filePath = dirPath+"\\"+status;
+//			File fileObj = new File(filePath);
+//			if(!fileObj.exists()) {
+//				fileObj.createNewFile();
+//			}else {
+//				System.out.println("File Already Exists.");
+//			}
+//			
+//			obj.forEach(e->{
+//				System.out.println(e.toString());
+//				String temp = e.toString();
+//				System.out.println(temp.indexOf("[") + "  " + temp.indexOf("]"));
+//				System.out.println(temp.substring(temp.indexOf("[")+1, temp.indexOf("]")));
+//			});
+//			
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//		}
+//		return obj;
 	}
 	
-	
+	@GetMapping("/restore/{status}")
+	public void RestoreData(@PathVariable("status") String Status) {
+		System.out.println("Status Value:- " + Status);
+		try {
+			studentRepo.RestoreData(Status);
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
+		
+	}
 	
 	@PostMapping("/student")
 	public void AddUser(@RequestBody Users user) {
