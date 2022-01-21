@@ -40,7 +40,7 @@ public class StudentController {
 			// TODO: handle exception
 			System.out.println(e);
 		}
-		
+//		
 //		List<Users> obj = studentRepo.getUserByStatus(status);
 //		try {
 //			String dirPath = baseDir + "Users";
