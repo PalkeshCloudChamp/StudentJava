@@ -19,9 +19,10 @@ public class CreateS3Bucket {
 
 	Regions region = Regions.AP_SOUTH_1;
 	String bucketName = "fe-backup-bucket";
+	// Something which should be saved at secure place or in environment variable.
 	String access_key = "";
 	String secret_key = "";
-	
+	// 
 	BasicAWSCredentials credentials = new BasicAWSCredentials(access_key, secret_key);
 	AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
 			.withCredentials(new AWSStaticCredentialsProvider(credentials))
