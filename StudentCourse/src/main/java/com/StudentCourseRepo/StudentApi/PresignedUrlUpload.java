@@ -26,8 +26,8 @@ public class PresignedUrlUpload {
 	
 	private Regions region = Regions.AP_SOUTH_1;
 	private String bucketName = "fe-backup-bucket";
-	private String access_key = "AKIAQID3PYRIG7XB7F4W";
-	private String secret_key = "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";
+	private String access_key = "";
+	private String secret_key = "";
 //	private String objectKey = "C:/blazeclan/FormsExpress/DB-testing/Tables";
 	private String objectKey = "116";
 	private BasicAWSCredentials credentials = new BasicAWSCredentials(access_key, secret_key);
