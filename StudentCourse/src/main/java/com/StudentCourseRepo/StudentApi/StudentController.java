@@ -160,7 +160,18 @@ public class StudentController {
 		System.out.println(us2);
 	}
 	
+	@GetMapping("/bucket/{cid}")
+	public String BucketInfo(@PathVariable("cid") int cid) {
+		ExportInformation ei = new ExportInformation();
+		return ei.UploadToS3(cid);
+	}
 	
+	
+	@GetMapping("/presignedBucket/{cid}")
+	public void UploadUsingPresigned(@PathVariable("cid") int cid) {
+		PresignedUrlUpload ei = new PresignedUrlUpload();
+//		return ei.UploadToS3(cid);
+	}
 	
 	
 	
